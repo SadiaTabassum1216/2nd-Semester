@@ -1,0 +1,44 @@
+package inheritence;
+
+public class Account {
+	private String name;
+	private String phone_num;
+    private double balance;
+    
+    public Account(String name, String number,double balance){
+	        this.name = name;
+	        this.phone_num = number;
+	        this.balance=balance;
+	    }
+     
+
+ //to print information
+	    void displayInfo() {
+	    	System.out.println("Name: "+name);
+	    	System.out.println("Mobile Number: "+phone_num);
+	    	System.out.println("Balance: "+ balance);
+	    	System.out.println("\n");
+	    }
+	    
+//Add money
+	  public void add_money(double amount){
+      this.balance += amount;
+      System.out.println("Add money: " + amount);
+      System.out.println("Current balance: "+ balance+"\n");
+  }
+
+//Cash out
+  	  public void cash_out(double amount, String pin){
+  		  
+  	          if (balance >= amount){
+                  balance -= amount;
+                  System.out.println("Cash out: " + amount);
+    	          System.out.println("Current balance: "+ balance+"\n");
+              }
+
+              else {
+                  System.out.println("Failed to cash out due to insufficient balance.\n");
+              }
+          
+      }	  
+}

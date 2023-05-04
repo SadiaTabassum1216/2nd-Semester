@@ -1,0 +1,49 @@
+package inheritence;
+
+public class Bank {
+	public void start_banking(){
+		Bkash Sadia_Bkash = new Bkash("Sadia Tabassum", "01627652864",10000 ,"2020");//Opening Bkash account
+		Sadia_Bkash.displayInfo();
+		
+		Bkash Turna = new Bkash("Turna Nishita", "01716459944",20000);// Opening Bkash account without pin
+		Turna.displayInfo();
+		
+		Rocket Sadia_Rocket=new Rocket("Sadia Tabassum", "016276528641",25000 ,"2020");//Opening Rocket account
+		Sadia_Rocket.displayInfo();
+		
+		Nagad Sadia_Nagad=new Nagad("Sadia Tabassum", "01627652864",0 ,"2020");//Opening Nagad account
+		Sadia_Nagad.displayInfo();
+		
+	//Transaction in Bkash with pin
+	    System.out.println("\n#Transaction of Sadia'a Bkash account: \n");
+	    Sadia_Bkash.add_money(1500);//add money
+	    Sadia_Bkash.cash_out(200,"6e56");//wrong pin
+	    Sadia_Bkash.cash_out(3000,"2020");//includes charge
+	    Sadia_Bkash.cash_out(10000,"2020");//insufficient balance
+	    
+	    
+	    
+	 //Transaction in Bkash without pin
+	    System.out.println("\n#Transaction of Turna's Bkash account: \n");
+	    Turna.add_money(1000);
+	    Turna.cash_out(500); //without pin
+	    Turna.pin_set("5678");//pin set
+	    Turna.cash_out(500,"46578");//wrong pin
+	    Turna.cash_out(400,"5678");//correct pin
+	    
+	 //Transaction in Rocket with pin
+	    System.out.println("\n#Transaction of Sadia'a Rocket account: \n");
+	    Sadia_Rocket.add_money(5);//less than minimum amount 
+	    Sadia_Rocket.add_money(50000);//more than maximum amount
+	    Sadia_Rocket.add_money(5000);
+	    Sadia_Rocket.cash_out(200,"2020");//cash out without charge
+	    Sadia_Rocket.cash_out(3000,"2020");
+
+	//Transaction in Nagad with pin
+		    System.out.println("\n#Transaction of Sadia'a Nagad account: \n");
+		    Sadia_Nagad.cash_out(500, "2020");//insufficient balance
+		    Sadia_Nagad.add_money(50000);//more than maximum amount
+		    Sadia_Nagad.add_money(300);		
+	}    
+}
+	

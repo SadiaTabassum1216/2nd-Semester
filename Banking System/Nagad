@@ -1,0 +1,60 @@
+package inheritence;
+
+public class Nagad extends Account{
+	    private String pin;
+	    public double charge=9.99;
+	    public double max_cashout=25000;
+	    public double max_addMoney=30000;
+	    public double min=50;
+	    
+	    public Nagad(String name, String number,double balance,String pin) {
+			super(name,number, balance);
+			this.pin=pin;
+		}
+
+		 
+//add money
+		 public void add_money(double amount) {
+			 if(amount>max_addMoney) {
+				 System.out.println("The ammount exceeds the limit.\n");
+			 }
+			 else {
+				super.add_money(amount);
+			 }
+		 }
+		
+//cash out
+		 public void cash_out(double amount,String pin) {
+			 if (pin != this.pin){
+	             System.out.println("Pin does not match.\n");
+	             return;
+	         }
+	         else{
+	     
+			 if(amount>max_cashout) {
+				 System.out.println("The ammount exceeds the cash out limit.\n");
+				 System.out.println("\n");
+				 
+			 }
+			 else if(amount<min) {
+				 System.out.println("The ammount is too less to cashout.\n");
+			 	}
+			 else{
+				 if(amount>1000) {
+					 amount=amount+amount*charge/1000;
+					 super.cash_out(amount, pin);	 
+				 }
+				 else
+				 super.cash_out(amount, pin);
+		 		}
+	         }
+		 }
+
+		 
+ //to print information
+		 void displayInfo() {
+		    System.out.println("Welcome to your Nagad Account!");
+		    super.displayInfo();
+		    }
+
+}

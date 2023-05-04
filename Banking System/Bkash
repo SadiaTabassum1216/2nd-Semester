@@ -1,0 +1,77 @@
+package inheritence;
+
+public class Bkash extends Account {
+    private String pin;
+    public double charge=17.5;
+    public double max=25000;
+    public double min=10;
+    
+//Opening account with pin
+    public Bkash(String name, String number,double balance,String pin) {
+		super(name,number, balance);
+		this.pin=pin;
+	}
+
+//Opening account without pin
+    public Bkash(String name, String number,double balance) {
+		super(name,number, balance);
+	}
+
+    
+//add money
+	 public void add_money(double amount) {
+		 if(amount>max) 
+			 System.out.println("The ammount exceeds the add money limit.\n");
+		 
+		 else if(amount<min) 
+			 System.out.println("The ammount is too less to deposit.\n");
+		 
+		 else 
+			super.add_money(amount);
+		 
+	 }
+	 
+//cash out with pin
+	 public void cash_out(double amount,String pin) {
+		if (pin != this.pin){
+             System.out.println("Pin does not match.\n");
+             return;
+         }
+		else{
+    	   if(amount>max) 
+    		   System.out.println("The ammount exceeds the cash out limit.\n");
+		 
+    	   else if(amount<min)
+    		   System.out.println("The ammount is too less to cashout.\n");
+		 	
+    	   else{
+			 if(amount>500) {
+				 amount=amount+amount*charge/1000;
+				 super.cash_out(amount, pin);	 
+			 }
+			 else 
+				 super.cash_out(amount, pin);
+	 		}
+         }
+	 }
+
+//Cash out without pin
+  	 public void cash_out(double amount){  
+  		 if(pin == null) {
+  			 System.out.println("Please set your pin first.\n");	 
+  		 }
+  	 }
+  	 
+//set pin
+  		 public void pin_set(String pin_code) {
+  			 this.pin=pin_code;
+  			 System.out.println("Pin updated.\n");
+  		 }
+	 
+//to print information
+	    void displayInfo() {
+	    	System.out.println("Welcome to your Bkash Account!");
+	    	super.displayInfo();
+	    }
+
+}
